@@ -11,7 +11,7 @@ import Register from './components/Forms/Register/index';
 
 
 // DASHBOARD AND NAVIGATION
-import Nav from './components/Navigation/NavBar';
+// import Nav from './components/Navigation/NavBar';
 import Dashboard from './components/Dashboard/index';
 
 

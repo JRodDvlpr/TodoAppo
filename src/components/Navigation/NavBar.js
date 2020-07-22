@@ -1,26 +1,24 @@
 import React from 'react';
 
-import Dashboard from '../Dashboard/index';
-
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 //ANTD UI LIBRARY
-import { Button, Layout, Menu } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
+import { UserOutlined} from '@ant-design/icons';
 const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 const NavBar = () => {
 
     const history = useHistory();
   
-    const logout = () => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user_id')
-      history.push('/');
+    // const logout = () => {
+    //   localStorage.removeItem('token');
+    //   localStorage.removeItem('user_id')
+    //   history.push('/');
   
-    }
+    // }
     return (
       <>
       <Layout>
