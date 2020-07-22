@@ -1,0 +1,90 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* ###################### NAVIGATION ###################### */
+#navigation {
+  margin-bottom:20px;
+  border-bottom: 1px solid #000000;
+}
+/* ###################### NAVIGATION END ###################### */
+
+/* ###################### Login and Register ###################### */
+.loginbg {
+  height: 100vh;
+  background-color: #fafafa !important;
+  padding-top:20%;
+}
+
+#signupTitle {
+  text-align: center;
+}
+
+#signCard {
+  border: 1px solid black;
+  background-color: #fff;
+  margin: auto;
+  padding: 2%;
+  width: 40%;
+
+}
+
+.register-form-button {
+  width: 100%;
+}
+
+.alreadyuser {
+  padding-top: 5%;
+}
+/* ###################### Login and Register End ####################### */
+
+/* ######################  ###################### */
+
+#components-layout-demo-top-side-2 .logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 28px 16px 0;
+  float: left;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+/* ######################  ###################### */
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
