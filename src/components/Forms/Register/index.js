@@ -11,7 +11,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const Register = () => {
     // console.log("props in register", props);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     // const history = useHistory();
     
 
