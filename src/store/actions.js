@@ -19,21 +19,23 @@ export const loginUser = (logIn, props) => dispatch => {
     .catch(err => dispatch({ type: LOGIN_ERROR, payload: err}))
 }
 
+
 export const REGISTER_START = 'REGISTER_START'
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const REGISTER_ERROR = 'REGISTER_ERROR'
 
-
 export const registerUser = (user) => dispatch => {
-    dispatch({ type: REGISTER_START})
+    dispatch({ type: REGISTER_START })
 
-    axiosWithAuth()
-    .post('auth/register', user)
+    axiosWithAuth().post('auth/register', user)
     .then(res => {
-        dispatch({ type: REGISTER_SUCCESS, payload: res.data})
+        dispatch({ type: REGISTER_SUCCESS, payload: res.data })
+        
     })
-    .catch(err => dispatch({ type: REGISTER_ERROR, payload: err }))
+    .catch(err =>
+    dispatch({type: REGISTER_ERROR }))
 }
+
 export const GET_TODOLIST_SUCCESS = 'GET_TODOLIST_SUCCESS'
 export const GET_TODO_SUCCESS = 'GET_TODO_SUCCESS'
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'
