@@ -57,7 +57,9 @@ const Register = () => {
             <Form.Item
                 name="username"
                 rules={[{ required: true, message: 'Please input your Username!' }]}>
-                <Input type="username" prefix={<UserOutlined className="site-form-item-icon" />}  value={user.username} type="username" placeholder="Username"  onChange={handleChange} />
+
+                <Input prefix={<UserOutlined className="site-form-item-icon" />}  value={user.username} type="username" placeholder="Username"  onChange={handleChange} />
+
             </Form.Item>
             <Form.Item
                 name="password"
