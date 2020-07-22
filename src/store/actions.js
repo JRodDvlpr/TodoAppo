@@ -13,7 +13,7 @@ export const loginUser = (logIn, props) => dispatch => {
         console.log(res);
         // localStorage.setItem('token', res.data.token)
         // localStorage.setItem('user_id', res.data.id)
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data, user_id: res.data.id, token: res.data.token})
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data})
         props.history.push(`/dashboard/${res.data.id}`)
     })
     .catch(err => dispatch({ type: LOGIN_ERROR, payload: err}))

@@ -57,7 +57,7 @@ const Register = () => {
             <Form.Item
                 name="username"
                 rules={[{ required: true, message: 'Please input your Username!' }]}>
-                <Input prefix={<UserOutlined className="site-form-item-icon" />}  value={user.username} placeholder="Username"  onChange={handleChange} />
+                <Input type="username" value={user.username}prefix={<UserOutlined className="site-form-item-icon" />}  placeholder="Username"  onChange={handleChange} />
             </Form.Item>
             <Form.Item
                 name="password"
@@ -65,8 +65,7 @@ const Register = () => {
                 >
 
                 <Input
-                    prefix={<LockOutlined className="site-form-item-icon" />} value={user.password}
-                    type="password"
+                    prefix={<LockOutlined className="site-form-item-icon" />} type="password" value={user.password}
                     placeholder="Password" onChange={handleChange}
                 />
             
