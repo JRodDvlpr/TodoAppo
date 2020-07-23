@@ -52,7 +52,7 @@ export const reducer = (state = initialState, action) => {
         };
 
         case REGISTER_ERROR:
-            console.log(error);
+            
             return {
               ...state,
               error: action.error
