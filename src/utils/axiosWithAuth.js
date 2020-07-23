@@ -6,7 +6,8 @@ export const axiosWithAuth = () => {
     return axios.create({
         baseURL: "https://todoappo.herokuapp.com/api",
         headers:{
-            'Access-Control-Allow-Headers: Origin, Content-Type': 'application/json',
+            'Access-Control-Allow-Headers': 'Origin', 
+            'Content-Type': 'application/json',
             Authorization: `${token}`,
         },  
     });
