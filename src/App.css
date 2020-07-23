@@ -35,6 +35,34 @@
 }
 /* ###################### NAVIGATION END ###################### */
 
+/* ###################### MAIN PAGE DIRECTION  ###################### */
+.main{
+  width:100%;
+  height: 100vh;
+}
+.main-Sign{
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  
+}
+
+.mainCards{
+  margin: auto;
+}
+
+.mainTitle {
+  text-align: center;
+  margin: auto;
+  width: 70%;
+  
+}
+
+.loginAva{
+  background-image: url('./img/undraw_duplicate_xac4.png');
+}
+/* ###################### MAIN PAGE DIRECTION  ###################### */
+
 /* ###################### Login and Register ###################### */
 .loginbg {
   height: 100vh;

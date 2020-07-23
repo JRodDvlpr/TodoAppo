@@ -1,14 +1,14 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
-const Restricted = ({ component: Component, ...rest }) => (
+const Restricted = ({ component: Component, ...props }) => (
     <Route 
-        {...rest}
-        render={props => 
+        {...props}
+        render={() => 
             localStorage.getItem('token') ? (
-            <Component {...props} />
+            <Component />
         ) : ( 
-            <Redirect to='/login' />
+            <Redirect to='/' />
         )
         }
     />

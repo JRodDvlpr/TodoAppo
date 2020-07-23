@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {Spin} from 'antd';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+    // const [isLoading, setIsLoading ] = useState(true);
+
+  
 
     return (
-
+        <div>
+        {/* {isLoading ? (<Spin />) : */}
         <div>
             <h1>Dashboard</h1>
+        </div>
+        {/* } */}
         </div>
     )
 }

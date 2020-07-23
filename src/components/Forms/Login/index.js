@@ -8,11 +8,11 @@ import { loginUser } from '../../../store/actions';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-const Login = () => {
+const Login = (props) => {
 
     const dispatch = useDispatch();
 
-
+    
 
     const [signIn, setSignIn] = useState({
         username: "",
@@ -21,17 +21,18 @@ const Login = () => {
   
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(loginUser(signIn));
+        dispatch(loginUser(signIn, props));
         setSignIn({
           username:'',
           password: '',
         })
+        
     
        
     }
 
     const handleChange = (event) => {
-    event.preventDefault();
+        event.preventDefault();
        setSignIn({...signIn, [event.target.name]: event.target.value });
     };
 
@@ -51,7 +52,11 @@ const Login = () => {
             <Form.Item
                 name="username"
                 rules={[{ required: true, message: 'Please input your Username!' }]}>
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} type="username" placeholder="Username"  onChange={handleChange} />
+                <Input prefix={<UserOutlined className="site-form-item-icon" />} 
+                type="username" 
+                placeholder="Username" 
+                value={signIn.username}  
+                onChange={handleChange} />
             </Form.Item>
             <Form.Item
                 name="password"
@@ -61,16 +66,17 @@ const Login = () => {
                 <Input
                     prefix={<LockOutlined className="site-form-item-icon" />}
                     type="password"
+                    value={signIn.password}
                     placeholder="Password"
                 />
             
             </Form.Item>
             <Form.Item>
                 <Button type="primary" htmlType="submit" className="register-form-button">
-                    Register
+                    Log In
                 </Button>
                 <div className="alreadyuser">
-                Already signed up?<Link to={'/login'}>Log In</Link>
+                Not signed up?<Link to={'/register'}>Create New User</Link>
                 </div>
             </Form.Item>
             </form>

@@ -6,7 +6,7 @@ import App from './App';
 // UI Library Antd
 import 'antd/dist/antd.css';
 
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import thunk from "redux-thunk";
 
@@ -25,7 +25,9 @@ ReactDOM.render(
     //setting up redux store & provider
     <Provider store={store}>
         <Router>
-            <App />
+            <Route>
+                <App />
+            </Route>
         </Router>
     </Provider>,
     rootElement

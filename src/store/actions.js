@@ -1,20 +1,23 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+
+
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const LOGIN_START = 'LOGIN_START'
 
-export const loginUser = (logIn, props) => dispatch => {
+export const loginUser = (signIn, props) => dispatch => {
     dispatch({ type: LOGIN_START }) 
+
     
     axiosWithAuth()
-    .post('/auth/login', logIn)
+    .post('/auth/login', signIn)
     .then(res => {
         console.log(res);
-        // localStorage.setItem('token', res.data.token)
-        // localStorage.setItem('user_id', res.data.id)
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data})
-        props.history.push(`/dashboard/${res.data.id}`)
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('id', res.data.user_id)
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data, })
+        props.history.push(`/dashboard`)
     })
     .catch(err => dispatch({ type: LOGIN_ERROR, payload: err}))
 }
@@ -24,13 +27,15 @@ export const REGISTER_START = 'REGISTER_START'
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const REGISTER_ERROR = 'REGISTER_ERROR'
 
-export const registerUser = (user) => dispatch => {
+export const registerUser = (user, props) => dispatch => {
     dispatch({ type: REGISTER_START })
 
     axiosWithAuth().post('/auth/register', user)
     .then(res => {
-        dispatch({ type: REGISTER_SUCCESS, payload: res.data })
-        
+        dispatch({ type: REGISTER_SUCCESS, payload: res.data, id: res.data.id, token: res.data.token })
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('id', res.data.id)
+        props.history.push(`/dashboard`)
     })
     .catch(err =>
     dispatch({type: REGISTER_ERROR }))
