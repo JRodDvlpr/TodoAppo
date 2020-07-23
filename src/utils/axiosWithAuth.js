@@ -4,9 +4,11 @@ export const axiosWithAuth = () => {
     const token = localStorage.getItem('token');
 
     return axios.create({
-        baseURL: "https://cors-anywhere.herokuapp.com/https://todoappo.herokuapp.com/api",
+        baseURL: "https://todoappo.herokuapp.com/api",
         headers:{
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
             Authorization: `${token}`,
         },  
     });
