@@ -18,7 +18,7 @@ const initialState = {
 
     user: [],
     todoList: [],
-    error: ''
+    errorMessage: null
 }
 
 export const reducer = (state = initialState, action) => {
@@ -27,6 +27,8 @@ export const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case LOGIN_SUCCESS:
+        localStorage.setItem('token', action.payload.token)
+        localStorage.setItem('id', action.payload.id)
         return {
             ...state,
             user: action.payload,
@@ -35,7 +37,8 @@ export const reducer = (state = initialState, action) => {
         case LOGIN_ERROR:
             return {
             ...state,
-            error: action.payload,
+            error: true,
+            errorMessage: alert("Incorrect Username or Password"),
             
         };
 
@@ -46,6 +49,8 @@ export const reducer = (state = initialState, action) => {
             };
 
         case REGISTER_SUCCESS:
+        localStorage.setItem('token', action.payload.token)
+        localStorage.setItem('id', action.payload.id)
         return {
             ...state,
             user: action.payload,
@@ -57,7 +62,6 @@ export const reducer = (state = initialState, action) => {
               ...state,
               error: action.error
               
-        
             };
 
 
@@ -88,6 +92,7 @@ export const reducer = (state = initialState, action) => {
             ...state,
             todoList: [...state.todolist.filter(todo => todo.id !== action.payload)]
         }
+        
     default: 
     return state;
     }

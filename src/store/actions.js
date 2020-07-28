@@ -1,7 +1,6 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
-
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const LOGIN_START = 'LOGIN_START'
@@ -14,11 +13,8 @@ export const loginUser = (signIn, props) => dispatch => {
     .post('/auth/login', signIn)
     .then(res => {
         console.log(res);
-        localStorage.setItem('token', res.data.token)
-        localStorage.setItem('id', res.data.user_id)
         dispatch({ type: LOGIN_SUCCESS, payload: res.data, id: res.data.id, token: res.data.token })
-
-        // props.history.push(`/dashboard`)
+        props.history.push(`/dashboard`)
     })
     .catch(err => dispatch({ type: LOGIN_ERROR, payload: err.data, }))
 }
@@ -35,13 +31,12 @@ export const registerUser = (user, props) => dispatch => {
     .post('/auth/register', user)
     .then(res => {
         dispatch({ type: REGISTER_SUCCESS, payload: res.data, id: res.data.id, token: res.data.token })
-        localStorage.setItem('token', res.data.token)
-        localStorage.setItem('id', res.data.id)
         props.history.push(`/dashboard`)
     })
     .catch(err =>
-    dispatch({type: REGISTER_ERROR }))
+    dispatch({ errorMessage: REGISTER_ERROR, error: err.message}))
 }
+
 
 export const GET_TODOLIST_SUCCESS = 'GET_TODOLIST_SUCCESS'
 export const GET_TODO_SUCCESS = 'GET_TODO_SUCCESS'

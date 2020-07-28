@@ -1,22 +1,23 @@
 import React, {useState} from 'react';
-import {Link  } from 'react-router-dom';
 
+// REACT ROUTER DOM
+import { Link  } from 'react-router-dom';
 
+// REDUX
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../../../store/actions'
+import { registerUser } from '../../store/actions'
 
-import { Form, Input, Button } from 'antd';
+// ANTD UI LIBRARY
+import { Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 
 
 const Register = (props) => {
-    // console.log("props in register", props);
+    
+    // REDUX ACTION
     const dispatch = useDispatch();
     
-  
-    
-
     const [user, setUser] = useState({
         username: "",
         password: ""
@@ -30,10 +31,7 @@ const Register = (props) => {
             username: '',
             password: ''
         })
-        
-        
-     
-       
+           
     }
 
     const handleChange = (event) => {
@@ -56,33 +54,39 @@ const Register = (props) => {
                 className="login-form"
                 onSubmit={handleSubmit}
                 >
-            <Form.Item
-                
-                rules={[{ required: true, message: 'Please input your Username!' }]}>
+            <div>
 
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} name="username"
-                type="text" value={user.username} placeholder="Username"  onChange={handleChange} />
-
-            </Form.Item>
-            <Form.Item
-                
-                rules={[{ required: true, message: 'Please input your Password!' }]}
-                >
-
-                <Input
-                    prefix={<LockOutlined className="site-form-item-icon" />} name="password" type="password" value={user.password}
-                    placeholder="Password" onChange={handleChange}
+                <Input 
+                    prefix={<UserOutlined className="site-form-item-icon" />} 
+                    name="username" required
+                    type="text" 
+                    value={user.username} 
+                    placeholder="Username"  
+                    onChange={handleChange} 
                 />
+
+            </div>
+            <div>
+
+                
+                <Input.Password
+                    prefix={<LockOutlined className="site-form-item-icon" />}
+                    name="password" 
+                    type="password" required
+                    value={user.password}
+                    placeholder="Password"
+                    onChange={handleChange}
+                />  
             
-            </Form.Item>
-            <Form.Item>
+            </div>
+            <div>
                 <Button type="primary" htmlType="submit" className="register-form-button">
                     Register
                 </Button>
                 <div className="alreadyuser">
-                Already signed up?<Link to={'/login'}>Log In</Link>
+                <p>Already signed up?</p><br/><Link to={'/login'}>Log In</Link>
                 </div>
-            </Form.Item>
+            </div>
             </form>
 
                 

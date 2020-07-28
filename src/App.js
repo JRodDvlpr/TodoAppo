@@ -7,10 +7,10 @@ import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './utils/restrictedRoute';
 
 // Register-Login Components
-import Login from './components/Forms/Login/index.js';
-import Register from './components/Forms/Register/index.js';
-import Main from './components/Forms/SignLogPage/index.js';
-import AddTodo from './components/Forms/Todo/index.js'
+import Login from './components/LoginPage/index';
+import Register from './components/RegisterPage/index.js';
+import Main from './components/MainPage/index.js';
+import AddTodo from './components/Todo/index.js'
 
 // DASHBOARD AND NAVIGATION
 

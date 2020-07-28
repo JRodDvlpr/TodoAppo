@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Image1 from '../../../img/undraw_duplicate_xac4.png'
-import Image2 from '../../../img/undraw_browsing_online_sr8c.png'
+import Image1 from '../../img/undraw_duplicate_xac4.png'
+import Image2 from '../../img/undraw_browsing_online_sr8c.png'
 // ANTD UI
 import { Card } from 'antd';
 
