@@ -5,7 +5,7 @@ import { Link  } from 'react-router-dom';
 
 // REDUX
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../../store/actions'
+import { registerUser } from '../../Redux/Actions/actions'
 
 // ANTD UI LIBRARY
 import { Input, Button } from 'antd';

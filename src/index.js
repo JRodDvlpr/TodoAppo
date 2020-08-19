@@ -1,34 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { BrowserRouter as Router } from "react-router-dom";
 import App from './App';
 
 // UI Library Antd
 import 'antd/dist/antd.css';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import thunk from "redux-thunk";
-
-import { createStore, applyMiddleware } from "redux";
-//Redux - Store
+// Redux // 
 import { Provider } from 'react-redux';
-// Reducers
-import {reducer} from "./store/reducer";
+import { persistor, store } from './Redux/store.js';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
-
-const store = createStore(reducer, applyMiddleware(thunk))
+import LoadingView from './utils/LoadingView.js';
 
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
     //setting up redux store & provider
     <Provider store={store}>
-        <Router>
-            <Route>
+        <PersistGate loading={<LoadingView />} persistor={persistor}>
+            <Router>
                 <App />
-            </Route>
-        </Router>
+            </Router>
+        </PersistGate>
     </Provider>,
     rootElement
 );

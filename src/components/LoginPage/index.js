@@ -3,9 +3,9 @@ import React, {useState} from 'react';
 // REACT ROUTER 
 import { Link } from 'react-router-dom';
 
-//REDUX ACTIONS
-import { useDispatch } from 'react-redux';
-import { loginUser } from '../../store/actions';
+// REDUX ACTIONS
+import { useDispatch, connect } from 'react-redux';
+import { loginUser } from '../../Redux/Actions/actions';
 
 // ANTD UI LIBRARY
 import { Input, Button } from 'antd';
@@ -19,9 +19,7 @@ const Login = (props) => {
 
     const [signIn, setSignIn] = useState({
         username: "",
-        password: "",
-        usernameError: 'The username',
-        passwordError: ''
+        password: ""
     });
   
     const handleSubmit = (event) => {
@@ -39,7 +37,6 @@ const Login = (props) => {
        setSignIn({...signIn, [event.target.name]: event.target.value });
     };
 
-   
 
     return (
 

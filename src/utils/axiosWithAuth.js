@@ -7,7 +7,7 @@ export const axiosWithAuth = () => {
         baseURL: "https://todoappo.herokuapp.com/api",
         headers:{
             'Content-Type': 'application/json',
-            Authorization: `${token}`,
+            Authorization: token,
         },  
     });
 };
