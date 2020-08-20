@@ -14,8 +14,7 @@ import {
 
 const initialState = {
 
-    username: '',
-    user_Id: null,
+    user: {},
     isLoggedIn: false,
     isUpdating: false,
     todoList: [],
@@ -23,31 +22,33 @@ const initialState = {
     isFetching: false
 }
 
-const reducer = (state = initialState, {type, payload}) => {
+const reducer = (state = initialState, action) => {
 
-
-    switch (type) {
+    console.log(action);
+    switch (action.type) {
 
         case LOGIN_USER:
-        localStorage.setItem('token', payload.token)
-        console.log(payload);
+        localStorage.setItem('token', action.payload.token)
+        console.log(action.payload);
         return {
             ...state,
-            used_Id: payload.user.id,
-            username: payload.user.username,
-            isLoggedIn: true,
+           user: action.payload,
+           id: action.payload.id,
+           isLoggedIn: true,
+           isFetching: true
 
         };
 
 
 
         case REGISTER_USER:
-        localStorage.setItem('token', payload.token)
+        localStorage.setItem('token', action.payload.token)
         return {
             ...state,
-            used_Id: payload.user.id,
-            username: payload.user.username,
-            isLoggedIn: true,
+            user: action.payload,
+           user_id: action.payload.id,
+           isLoggedIn: true,
+           isFetching: true
         };
 
 
@@ -55,7 +56,7 @@ const reducer = (state = initialState, {type, payload}) => {
         case GET_TODOLIST_SUCCESS: 
         return { 
             ...state, 
-            todoList: [...payload]
+            todoList: [...action.payload]
         }
 
         case GET_TODO_SUCCESS: 
@@ -66,7 +67,7 @@ const reducer = (state = initialState, {type, payload}) => {
         case ADD_TODO_SUCCESS:
         return {
             ...state,
-            todoList: [...state.todoList, payload]
+            todoList: [...state.todoList, action.payload]
         }
 
         case EDIT_TODO_SUCCESS:
@@ -77,12 +78,12 @@ const reducer = (state = initialState, {type, payload}) => {
         case DELETE_TODO_SUCCESS:
         return {
             ...state,
-            todoList: [...state.todolist.filter(todo => todo.id !== payload)]
+            todoList: [...state.todolist.filter(todo => todo.id !== action.payload)]
         }
         case GENERATE_ERROR:
             return {
                 ...state,
-                error: payload,
+                error: action.payload,
                 isFetching: false,
             };
         
@@ -99,5 +100,6 @@ const reducer = (state = initialState, {type, payload}) => {
     }
 
 }
+
 
 export default reducer;

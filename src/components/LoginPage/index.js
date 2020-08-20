@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
 // REDUX ACTIONS
-import { useDispatch, connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginUser } from '../../Redux/Actions/actions';
 
 // ANTD UI LIBRARY

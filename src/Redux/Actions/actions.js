@@ -9,7 +9,7 @@ export const registerUser = (user, props) => dispatch => {
     axiosWithAuth()
     .post('/auth/register', user)
     .then(res => {
-        dispatch({ type: REGISTER_USER, payload: res.data, id: res.data.id, token: res.data.token })
+        dispatch({ type: REGISTER_USER, payload: res.data, id: res.data.user.id, token: res.data.token })
         props.history.push(`/dashboard`)
     })
     .catch(err =>
