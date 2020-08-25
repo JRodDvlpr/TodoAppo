@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&family=Roboto:wght@100;300;400&display=swap');
+
+
+/*  BOX SHADOW FOR CARDS */
+/* box-shadow:0 7px 30px -10px rgba(150,170,180,0.5); */
+
+
+
 .App {
   text-align: center;
 }
@@ -12,6 +20,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+
+
 
 .App-header {
   background-color: #282c34;
@@ -28,14 +39,39 @@
   color: #61dafb;
 }
 
+
+
 /* ###################### NAVIGATION ###################### */
-#navigation {
-  margin-bottom:20px;
-  border-bottom: 1px solid #000000;
+
+
+
+.tdt {
+  background-color: lavender;
+
 }
-/* ###################### NAVIGATION END ###################### */
+.navigationContainer {
+  display: flex;
+  background-color: lavender;
+  width: 100%;
+}
+
+.tdt-Container {
+ margin: auto;
+}
+
+.tdt-Logout {
+  margin: auto;
+ }
+
+#companyLogo {
+  width: 10%;
+  padding: 1%;
+}
+
 
 /* ###################### MAIN PAGE DIRECTION  ###################### */
+
+
 .main{
   width:100%;
   height: 100vh;
@@ -61,22 +97,67 @@
 .loginAva{
   background-image: url('./img/undraw_duplicate_xac4.png');
 }
-/* ###################### MAIN PAGE DIRECTION  ###################### */
 
 /* ###################### Login and Register ###################### */
+
+.b-Container {
+  display: flex;
+  margin-left: 60px;
+  margin-bottom: 40px;
+  align-content:center;
+  
+}
+
+#b-Logo {
+  width: 80%;
+
+}
+
+.b-Name {
+  width: 20%;
+}
+
+.b-Name2 {
+ width: 70%;
+ font-size: 26px;
+ font-family: Montserrat, sans-serif;
+ font-weight: 200;
+}
+
 .loginbg {
   height: 100vh;
-  background-color: #fafafa !important;
-  padding-top:20%;
+  padding-top: 40px;
+}
+
+.form-button {
+  border-radius: 15px;
+  width:100%;
+  margin-top: 20px;
+  background-color: lavender;
+  border: none;
+  padding: 6px;
+}
+
+.input-Container {
+  padding: 10px;
 }
 
 #signupTitle {
   text-align: center;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+
+
+.register-form-button {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
 }
 
 #signCard {
-  border: 1px solid black;
   background-color: #fff;
+  border-radius: 5px;
   margin: auto;
   padding: 2%;
   width: 40%;
@@ -89,8 +170,55 @@
 
 .alreadyuser {
   padding-top: 5%;
+  font-family: Montserrat, sans-serif;
+  font-weight: 300;
 }
-/* ###################### Login and Register End ####################### */
+
+.ml-hover{
+  text-decoration: underline
+}
+
+.ml-hover:hover {
+  color: purple;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ////////////////  MOBILE  ////////////////// */
+
+@media only screen and (max-width: 415px) {
+
+  .main-Sign{
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .mainCards{
+    margin: auto;
+
+  }
+  
+  .mainTitle {
+    text-align: center;
+    margin: auto;
+    width: 70%;
+    font-size: 24px;
+    
+  }
+
+  /* // LOG IN //  */
+  #signCard {
+    width: 80%;
+  }
+
+  .alreadyuser {
+    margin: 10px;
+  }
+
+  
+}
+
 
 /* ######################  ###################### */
 

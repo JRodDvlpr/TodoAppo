@@ -19,7 +19,7 @@ const rootPersistConfig = {
 const initialState = {};
 
 
-const pReducer = persistReducer(rootPersistConfig, userReducer);
+const perReducer = persistReducer(rootPersistConfig, userReducer);
 
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -28,6 +28,6 @@ const composeEnhancers =
 
 const enhancer = composeEnhancers(applyMiddleware(...middleware));
 
-export const store = createStore(pReducer, initialState, enhancer);
+export const store = createStore(perReducer, initialState, enhancer);
 
 export const persistor = persistStore(store);

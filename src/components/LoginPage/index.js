@@ -8,8 +8,11 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from '../../Redux/Actions/actions';
 
 // ANTD UI LIBRARY
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+
+// IMAGES
+import BrandLogo from '../../img/icons8-checklist-80.png';
 
 
 const Login = (props) => {
@@ -45,57 +48,80 @@ const Login = (props) => {
             
             <div id='signCard'>
 
-            <div id="signupTitle">
-                <h2>Login</h2>
+                <div className='b-Container'>
+
+                    <div className='b-Name'>
+                        <img id='b-Logo' src={BrandLogo} alt="brandlogo"/>
+                    </div>
+                
+                    <div className='b-Name2'>
+                        <p>What todo ?</p>
+                    </div>
+
+                </div>
+
+                <div id="signupTitle">
+                    <p>Login</p>
+                </div>
+                
+
+                <form
+                    name="normal_login"
+                    className="login-form"
+                    onSubmit={handleSubmit}>
+
+                    <div className="input-Container">
+
+                        <Input prefix={<UserOutlined className="site-form-item-icon" />} 
+                            name="username"
+                            type="username" required
+                            placeholder="Username" 
+                            value={signIn.username}  
+                            onChange={handleChange} 
+                        />
+
+                    </div>
+                
+                    <div className="input-Container">
+                
+                
+                        <Input.Password
+                            prefix={<LockOutlined className="site-form-item-icon" />}
+                            name="password" 
+                            type="password" required
+                            value={signIn.password}
+                            placeholder="Password"
+                            onChange={handleChange}
+                        />
+                
+                    </div>
+                    <div className="button-Container">
+
+                        <button className="form-button">
+                            Log In
+                        </button>
+
+                    </div>
+
+                    <div className="alreadyuser">
+                           
+                           <p>Don't have an account?</p>
+                           {/* Create a button for the link sign up UX/UI */}
+
+                           <div>
+                                <Link className="ml-hover" to={'/register'}>
+                                    <p>Sign up</p>
+                                </Link>
+                            </div>
+                    </div>
+                </form>
+
+                
             </div>
-
-            <form
-                name="normal_login"
-                className="login-form"
-                onSubmit={handleSubmit}>
-
-                <div>
-
-                    <Input prefix={<UserOutlined className="site-form-item-icon" />} 
-                        name="username"
-                        type="username" required
-                        placeholder="Username" 
-                        value={signIn.username}  
-                        onChange={handleChange} 
-                    />
-
-                </div>
-                
-                <div>
-                
-                
-                    <Input.Password
-                        prefix={<LockOutlined className="site-form-item-icon" />}
-                        name="password" 
-                        type="password" required
-                        value={signIn.password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                    />
-                
-                </div>
-                <div>
-                    
-                    <Button type="primary" htmlType="submit" className="register-form-button">
-                        Log In
-                    </Button>
-
-                <div className="alreadyuser">
-                    Not signed up?<Link to={'/register'}>Create New User</Link>
-                </div>
-                </div>
-            </form>
-
-                
-    </div>
-    </div>
+        </div>
     
     
-)}
+    )
+}
 
 export default Login;

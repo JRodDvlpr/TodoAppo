@@ -1,6 +1,8 @@
 import React from 'react';
 // import {Spin} from 'antd';
 
+import Nav from '../Navigation/NavBar.js';
+
 const Dashboard = (props) => {
     // const [isLoading, setIsLoading ] = useState(true);
 
@@ -8,7 +10,7 @@ const Dashboard = (props) => {
 
     return (
         <div>
-        {/* {isLoading ? (<Spin />) : */}
+        <Nav />
         <div>
             <h1>Dashboard</h1>
         </div>

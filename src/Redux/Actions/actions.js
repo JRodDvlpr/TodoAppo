@@ -27,10 +27,19 @@ export const loginUser = (signIn, props) => dispatch => {
     .then(res => {
         console.log(res);
         dispatch({ type: LOGIN_USER, payload: res.data, id: res.data.id, token: res.data.token })
+        props.history.push(`/dashboard`)
         
     })
     .catch(err => dispatch({ type: GENERATE_ERROR, payload: err.data, }))
 }
+
+// LOG OUT USER //
+export const LOGOUT_USER = 'LOGOUT_USER'
+
+export const logoutUser = (props) => (dispatch) => {
+    dispatch({ type: LOGOUT_USER });
+    
+};
 
 
 export const GET_TODOLIST_SUCCESS = 'GET_TODOLIST_SUCCESS'

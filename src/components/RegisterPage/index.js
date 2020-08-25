@@ -8,8 +8,12 @@ import { useDispatch } from 'react-redux';
 import { registerUser } from '../../Redux/Actions/actions'
 
 // ANTD UI LIBRARY
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+
+
+// IMAGES
+import BrandLogo from '../../img/icons8-checklist-80.png';
 
 
 
@@ -46,15 +50,29 @@ const Register = (props) => {
         <div className='loginbg'>   
             
             <div id='signCard'>
+
+                <div className='b-Container'>
+
+                    <div className='b-Name'>
+                        <img id='b-Logo' src={BrandLogo} alt="brandlogo"/>
+                    </div>
+                
+                    <div className='b-Name2'>
+                        <p>What todo ?</p>
+                    </div>
+
+                </div>
+
             <div id="signupTitle">
-                <h2>Sign Up</h2>
+                <p>Sign up for free and start crushing your task.</p>
             </div>
-            <form
-                name="normal_login"
-                className="login-form"
-                onSubmit={handleSubmit}
-                >
-            <div>
+           
+        <form
+            name="normal_login"
+            className="login-form"
+            onSubmit={handleSubmit}>
+
+            <div className="input-Container">
 
                 <Input 
                     prefix={<UserOutlined className="site-form-item-icon" />} 
@@ -66,7 +84,8 @@ const Register = (props) => {
                 />
 
             </div>
-            <div>
+
+            <div className="input-Container">
 
                 
                 <Input.Password
@@ -79,15 +98,28 @@ const Register = (props) => {
                 />  
             
             </div>
+
             <div>
-                <Button type="primary" htmlType="submit" className="register-form-button">
-                    Register
-                </Button>
+
+                <div className="button-Container">
+                    <button className="form-button">
+                    Sign up
+                    </button>
+                </div>
+
                 <div className="alreadyuser">
-                <p>Already signed up?</p><br/><Link to={'/login'}>Log In</Link>
+
+                    <p>Have an account?</p>
+
+                    <div>
+                        <Link className="ml-hover" to={'/login'}>
+                            <p>Log In</p>
+                        </Link>
+                    </div>
+
                 </div>
             </div>
-            </form>
+        </form>
 
                 
     </div>

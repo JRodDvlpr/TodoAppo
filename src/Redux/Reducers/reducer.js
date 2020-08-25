@@ -1,6 +1,7 @@
 import { 
     LOGIN_USER,
     REGISTER_USER,
+    LOGOUT_USER,
     GET_TODOLIST_SUCCESS,
     GET_TODO_SUCCESS,
     ADD_TODO_SUCCESS,
@@ -19,12 +20,11 @@ const initialState = {
     isUpdating: false,
     todoList: [],
     error: null,
-    isFetching: false
+    isLoading: true
 }
 
 const reducer = (state = initialState, action) => {
-
-    console.log(action);
+   
     switch (action.type) {
 
         case LOGIN_USER:
@@ -35,7 +35,7 @@ const reducer = (state = initialState, action) => {
            user: action.payload,
            id: action.payload.id,
            isLoggedIn: true,
-           isFetching: true
+           isLoading: false
 
         };
 
@@ -51,7 +51,13 @@ const reducer = (state = initialState, action) => {
            isFetching: true
         };
 
+        case LOGOUT_USER:
+			localStorage.removeItem("token");
+			localStorage.removeItem("persist:root");
+		return { 
+            ...state
 
+        }
 
         case GET_TODOLIST_SUCCESS: 
         return { 
