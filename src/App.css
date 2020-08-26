@@ -51,7 +51,6 @@
 }
 .navigationContainer {
   display: flex;
-  background-color: lavender;
   width: 100%;
 }
 
@@ -61,7 +60,17 @@
 
 .tdt-Logout {
   margin: auto;
- }
+}
+
+#logOut-btn {
+  border: none;
+  background-color: lightskyblue;
+  opacity: 80%;
+  border-radius: 5px;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+
+}
 
 #companyLogo {
   width: 10%;
@@ -184,6 +193,14 @@
   text-decoration: underline;
 }
 
+/* //////// DASHBOARD //////// */
+.dash-Title {
+  font-family: Montserrat, sans-serif;
+  font-size: 40px;
+  font-weight: 100;
+  text-align: center;
+}
+
 /* ////////////////  MOBILE  ////////////////// */
 
 @media only screen and (max-width: 415px) {
@@ -216,6 +233,21 @@
     margin: 10px;
   }
 
+  /* // Navigation // */
+  #companyLogo {
+    width: 40%;
+    margin-left: 20px;
+    margin-top: 10px;
+    
+  }
+
+  .tdt-Logout {
+    width: 20%;
+    margin-right: 1px;
+    margin-top: 20px;
+  }
+
+  
   
 }
 

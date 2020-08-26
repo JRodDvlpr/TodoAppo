@@ -4,7 +4,7 @@ export const axiosWithAuth = () => {
     const token = localStorage.getItem('token');
 
     return axios.create({
-        baseURL: process.env.REACT_APP_PROD_URL,
+        baseURL: process.env.REACT_APP_LOCAL_URL,
 
         headers:{
             'Content-Type': 'application/json',

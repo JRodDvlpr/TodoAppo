@@ -1,46 +1,39 @@
 import React from 'react';
 
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // REDUX ACTIONS
 import { logoutUser } from '../../Redux/Actions/actions'
 
 import { useDispatch } from 'react-redux'
 
-import Logo from '../../img/checklist.png'
+import Logo from '../../img/icons8-checklist-80.png'
 //ANTD UI LIBRARY
 
 
-const NavBar = (props) => {
+const NavBar = () => {
 
     const history = useHistory();
 
     const dispatch = useDispatch();
-  
-    // const logout = () => {
-    //   localStorage.removeItem('token');
-    //   localStorage.removeItem('user_id')
-    //   history.push('/');
-  
-    // }
+
 
     const handleLogout = (e) => {
       e.preventDefault();
       dispatch(logoutUser());
-      history.push('/');
+      history.push('/login');
     }
 
     return (
       <div className="navigationContainer">
 
-        <div className="tdt-Container">
-          <div>
+        <div>
           <img id="companyLogo" src={Logo} alt="LogoT" />
-          </div>
         </div>
+        
 
         <div className="tdt-Logout">
-          <button onClick={handleLogout}>Logout</button>
+          <button id="logOut-btn" onClick={handleLogout}>Logout</button>
         </div>
       </div>
       
