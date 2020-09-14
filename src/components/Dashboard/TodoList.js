@@ -1,12 +1,20 @@
 import React from 'react';
 
 
-const TodoList = () => {
+const TodoList = ({text, completed}) => {
 
 
 
     return (
-        <div>
+        <div className="list">
+            
+            <ul>
+                <li>
+                    <label>{text}</label>
+                    <input type="checkbox" id="item" name="item" />
+                </li>
+                
+            </ul>
 
         </div>
     )

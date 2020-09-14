@@ -2,7 +2,7 @@ import {
     LOGIN_USER,
     REGISTER_USER,
     LOGOUT_USER,
-    GET_TODO_SUCCESS,
+    GET_TASK_SUCCESS,
     ADD_TODO_SUCCESS,
     TOGGLE_TODO,
     CLEAR_COMPLETED,
@@ -18,15 +18,14 @@ const initialState = {
 
     user: {},
     userId: null,
-    tasks: [],
-    isLogged: false,
-    isUpdating: false,
+    taskList: [],
+    isLoggedIn: false,
     error: null,
     isLoading: true,
-    isFetching: false
+    
 }
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
    
     switch (action.type) {
 
@@ -37,7 +36,7 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
            user: action.payload,
-           user_id: action.payload.user.id,
+           userId: action.payload.user.id,
            isLoggedIn: true,
            isLoading: false
 
@@ -52,7 +51,7 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             user: action.payload,
-            user_id: action.payload.user.id,
+            userId: action.payload.user.id,
            isLogged: true,
            isLoading: false
            
@@ -60,27 +59,25 @@ const reducer = (state = initialState, action) => {
 
         case LOGOUT_USER:
 			localStorage.removeItem("token");
-            localStorage.removeItem("persist:root");
             localStorage.removeItem("userId");
 		return { 
             ...state
 
         }
 
-        case GET_TODO_SUCCESS: 
+        case GET_TASK_SUCCESS: 
         return { 
             ...state, 
-            tasks: [...action.payload]
+            taskList: [...action.payload]
         }
 
 
         case ADD_TODO_SUCCESS:
         return {
             ...state,
-            tasks: [...state.tasks, 
+            taskList: [...state.taskList, 
             {
-                name: action.payload,
-                description: action.payload,
+                text: action.payload,
                 completed: false,
             },
             ],
@@ -89,21 +86,21 @@ const reducer = (state = initialState, action) => {
         case TOGGLE_TODO:
         return {
             ...state,
-            tasks: state.tasks.map(todo => {
-                if(action.payload === todo.id) {
+            taskList: state.taskList.map(task => {
+                if(action.payload === task.id) {
                     return {
-                        ...todo,
-                        completed: !todo.completed,
+                        ...task,
+                        completed: !task.completed,
                     };
                 }
-                return todo;
+                return task;
             })
         }
 
         case CLEAR_COMPLETED:
         return {
             ...state,
-            tasks: state.tasks.filter(todo => !todo.completed),
+            taskList: state.taskList.filter(task => !task.completed),
         };
         
             
@@ -116,7 +113,7 @@ const reducer = (state = initialState, action) => {
         case DELETE_TODO_SUCCESS:
         return {
             ...state,
-            todo: [...state.todo.filter(todo => todo.id !== action.payload)]
+            taskList: [...state.taskList.filter(task => task.id !== action.payload)]
         }
         case GENERATE_ERROR:
             return {
@@ -140,4 +137,3 @@ const reducer = (state = initialState, action) => {
 }
 
 
-export default reducer;

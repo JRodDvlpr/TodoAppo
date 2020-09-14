@@ -6,18 +6,28 @@ import Nav from '../Navigation/NavBar.js';
 import Footer from '../Dashboard/Footer.js'
 
 import InputForm from '../Dashboard/InputForm.js'
+import TodoList from '../Dashboard/TodoList.js'
+
 
 
 import {getTasks} from '../../Redux/Actions/actions'
 
-const Dashboard = (props) => {
+const Dashboard = () => {
+
     // const [isLoading, setIsLoading ] = useState(true);
     const dispatch = useDispatch();
-    const tasks = useSelector(state => state.tasks);
-    console.log(tasks);
+
+    const taskList = useSelector((state) => state.taskList);
+
+    console.log(taskList);
+
     useEffect(() => {
         dispatch(getTasks());
+
+
     }, [dispatch])
+
+
 
     return (
         <div>
@@ -25,18 +35,7 @@ const Dashboard = (props) => {
         <div className="dash-Title">
             <p>Todo</p>
         </div>
-        <div>
-        {tasks.map(task =>
-            <div>
-                <div>
-                    <div key={task.id}>
-                        <p>{task.name}</p>
-                        <p>{task.completed}</p>
-                    </div>
-                </div>
-            </div>
-            )}
-        </div>
+        <TodoList />
         <div>
         <InputForm />
         </div>

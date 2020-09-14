@@ -8,24 +8,22 @@ const InputForm = () => {
 
     const dispatch = useDispatch();
 
-    const [todo, setTodo ] = useState({
-        name: '',
-        description: '',
+    const [task, setTask ] = useState({
+        text: '',
         completed: false
     });
 
 
     const handleChange = (e) => {
         e.preventDefault();
-        setTodo({[e.target.name]: e.target.value });
+        setTask({[e.target.name]: e.target.value });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addTodo(todo))
-        setTodo({ 
-            name: '',
-            description: '',
+        dispatch(addTodo(task))
+        setTask({ 
+            text: '',
             completed: false
         });
 
@@ -36,31 +34,21 @@ const InputForm = () => {
         <div>
             <div>
                 <form onSubmit={handleSubmit}>
-                    <div>
+                    <div id="addTaskContaier">
                         <div>
                             <p>Add Task</p>
                             <input 
-                            placeholder="Add Task"
+                            placeholder="Add a Task"
                             type="text" 
-                            value={todo.name}
+                            value={task.text}
                             onChange={handleChange}
                             name="name"
                             >
                             </input>
-                        </div>
-                        <div>
-                            <p>Description</p>
-                            <input 
-                            type="text" 
-                            value={todo.description}
-                            onChange={handleChange}
-                            name="description"
-                            >
-                            </input>
+                            <button>Add</button>
                         </div>
                         
                     </div>
-                    <button>Add</button>
                 </form>
             </div>
         </div>

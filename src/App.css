@@ -201,6 +201,21 @@
   text-align: center;
 }
 
+/* ////////// ADD TASK CONTAINER ////////// */
+
+#addTaskContaier {
+  text-align:center;
+}
+
+/* ////////// TASK LIST CONTAINER /////////// */
+
+ul {
+  counter-reset: index;  
+  padding: 0;
+  max-width: 300px;
+}
+
+
 /* ////////////////  MOBILE  ////////////////// */
 
 @media only screen and (max-width: 415px) {

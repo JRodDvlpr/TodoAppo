@@ -41,16 +41,16 @@ export const logoutUser = (props) => (dispatch) => {
     
 };
 
-export const GET_TODO_SUCCESS = 'GET_TODO_SUCCESS'
+export const GET_TASK_SUCCESS = 'GET_TASK_SUCCESS'
 
-export const getTasks = (userId) => dispatch =>{
+export const getTasks = () => dispatch =>{
     
     const userId = localStorage.getItem('userId')
     axiosWithAuth().get(`/todo/${userId}/tasks`)
     .then(res => {
         console.log(res);
-        dispatch({ type: GET_TODO_SUCCESS, payload: res.data, userId: res.data.user.id})
-        console.log(userId);
+        dispatch({ type: GET_TASK_SUCCESS, payload: res.data})
+    
     })
     .catch(err => dispatch({ type: GENERATE_ERROR, payload: err }))
 

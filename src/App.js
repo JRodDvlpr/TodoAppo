@@ -13,36 +13,28 @@ import Main from './components/MainPage/index.js';
 import AddTodo from './components/Todo/index.js'
 
 // DASHBOARD AND NAVIGATION
-
 import Dashboard from './components/Dashboard/index.js';
-
-
-
-
 
 function App(props) {
 
   return (
-    
-    <main>
 
+    <main>
 
     {/* {     
     localStorage.getItem('token') ? <Redirect to={`/dashboard/${localStorage.getItem('id')}`} /> : null
     }	       */}
-
-
-
     <Switch>
-
+    {/* ROUTES */}
+    {/*  */}
+    <PrivateRoute exact path="/dashboard/:id" component={ Dashboard } />
+    <PrivateRoute exact path="/addtask" component={ AddTodo } />
+    {/*  */}
     <Route exact path="/" component={ Main } />
     <Route exact path="/register" component={ Register } />
     <Route exact path="/login" component={ Login } />
-    
-    <PrivateRoute exact path="/dashboard/:id" component={ Dashboard } {...props}  />
-    <PrivateRoute exact path="/addtask" component={ AddTodo } />
-    {/* <PrivateRoute exact path="/edit/:id" component={} /> */}
-      
+    {/*  */}
+  
     </Switch>
 
     </main>
