@@ -1,5 +1,5 @@
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { useParams } from 'react-router-dom'
+
 
 // REGISTER USER // 
 export const REGISTER_USER = 'REGISTER_USER'
@@ -25,7 +25,6 @@ export const loginUser = (signIn, props) => dispatch => {
     axiosWithAuth()
     .post('/auth/login', signIn)
     .then(res => {
-        console.log(res);
         dispatch({ type: LOGIN_USER, payload: res.data, id: res.data.id })
         props.history.push(`/dashboard/${res.data.user.id}`)
         
@@ -33,7 +32,7 @@ export const loginUser = (signIn, props) => dispatch => {
     .catch(err => dispatch({ type: GENERATE_ERROR, payload: err.data, }))
 }
 
-// LOG OUT USER //
+// LOG OUT USER -> REMOVES TOKEN & USER_ID //
 export const LOGOUT_USER = 'LOGOUT_USER'
 
 export const logoutUser = (props) => (dispatch) => {
@@ -41,14 +40,14 @@ export const logoutUser = (props) => (dispatch) => {
     
 };
 
+// RETRIEVE TASK FOR USER //
 export const GET_TASK_SUCCESS = 'GET_TASK_SUCCESS'
 
 export const getTasks = () => dispatch =>{
     
-    const userId = localStorage.getItem('userId')
-    axiosWithAuth().get(`/todo/${userId}/tasks`)
+    const id = localStorage.getItem('userId')
+    axiosWithAuth().get(`/todo/${id}/tasks`)
     .then(res => {
-        console.log(res);
         dispatch({ type: GET_TASK_SUCCESS, payload: res.data})
     
     })
@@ -56,11 +55,13 @@ export const getTasks = () => dispatch =>{
 
 }
 
+// ADD TASK
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'
 
 export const addTodo = (input) => dispatch => {
-    const {id} = useParams();
 
+    const id = localStorage.getItem('userId');
+    
     axiosWithAuth()
     .post(`/todo/${id}/add`, input)
     .then(res => {
@@ -70,12 +71,14 @@ export const addTodo = (input) => dispatch => {
     .catch(err => dispatch({ type: GENERATE_ERROR, payload: err}))
 }
 
+// CLEAR COMPLETED //
 export const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
 
 export const clearCompleted = () => dispatch => {
     dispatch({ type: CLEAR_COMPLETED })
 }
 
+// TOGGLE TODO //
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 
 export const toggleTodo = () => dispatch => {
@@ -97,8 +100,9 @@ export const setError = (errorMessage) => (dispatch) => {
 }
 
 
-export const CLEAR_ERROR = 'CLEAR_ERROR'
 // CLEAR AN ERROR MESSAGE //
+export const CLEAR_ERROR = 'CLEAR_ERROR'
+
 export const clearError = () => (dispatch) => {
     dispatch({ type: CLEAR_ERROR, payload: null})
 } 

@@ -21,7 +21,7 @@ const initialState = {
     taskList: [],
     isLoggedIn: false,
     error: null,
-    isLoading: true,
+    isLoading: false,
     
 }
 
@@ -29,6 +29,7 @@ export const reducer = (state = initialState, action) => {
    
     switch (action.type) {
 
+        // LOGIN USER //
         case LOGIN_USER:
         localStorage.setItem('token', action.payload.token)
         localStorage.setItem('userId', action.payload.user.id)
@@ -38,11 +39,12 @@ export const reducer = (state = initialState, action) => {
            user: action.payload,
            userId: action.payload.user.id,
            isLoggedIn: true,
-           isLoading: false
+           isLoading: true
 
         };
 
 
+        // REGISTER USER //
 
         case REGISTER_USER:
         localStorage.setItem('token', action.payload.token)
@@ -53,9 +55,11 @@ export const reducer = (state = initialState, action) => {
             user: action.payload,
             userId: action.payload.user.id,
            isLogged: true,
-           isLoading: false
+           isLoading: true
            
         };
+
+        // LOGOUT USER & REMOVE TOKEN //
 
         case LOGOUT_USER:
 			localStorage.removeItem("token");
@@ -65,29 +69,30 @@ export const reducer = (state = initialState, action) => {
 
         }
 
+        // FETCH TASK FOR USER //
+
         case GET_TASK_SUCCESS: 
         return { 
             ...state, 
-            taskList: [...action.payload]
+            taskList: [...action.payload],
+            isLoading: true
         }
 
+        // ADD TASK FOR USER //
 
         case ADD_TODO_SUCCESS:
         return {
             ...state,
-            taskList: [...state.taskList, 
-            {
-                text: action.payload,
-                completed: false,
-            },
-            ],
+            taskList: [...state.taskList, action.payload],
         }
 
+        // TOGGLE TASK //
         case TOGGLE_TODO:
+            let id = action.payload.data.id;
         return {
             ...state,
             taskList: state.taskList.map(task => {
-                if(action.payload === task.id) {
+                if (task.id === id) {
                     return {
                         ...task,
                         completed: !task.completed,
@@ -97,38 +102,46 @@ export const reducer = (state = initialState, action) => {
             })
         }
 
+        // CLEAR TASK //
         case CLEAR_COMPLETED:
         return {
             ...state,
-            taskList: state.taskList.filter(task => !task.completed),
+            taskList: state.taskList.filter(task => {
+                return !task.completed
+            }),
         };
         
             
+        // EDIT TASK //
 
-      case EDIT_TODO_SUCCESS:
+        case EDIT_TODO_SUCCESS:
         return {
             ...state
         }
+
+        // DELETE TASK //
 
         case DELETE_TODO_SUCCESS:
         return {
             ...state,
             taskList: [...state.taskList.filter(task => task.id !== action.payload)]
         }
-        case GENERATE_ERROR:
-            return {
-                ...state,
-                error: action.payload,
-                isFetching: false,
-            };
-        
-        case CLEAR_ERROR:
-            return {
-                ...state,
-                error: null,
-                isFetching: false,
 
-            };
+        // GENERATE GENERAL INCOMING ERROR //
+
+        case GENERATE_ERROR:
+        return {
+            ...state,
+            error: action.payload
+        };
+
+        // CLEAR ERROR MESSAGE //
+
+        case CLEAR_ERROR:
+        return {
+            ...state,
+            error: null
+        };
         
     default: 
         return state;

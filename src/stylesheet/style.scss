@@ -1,82 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&family=Roboto:wght@100;300;400&display=swap');
 
-
-/*  BOX SHADOW FOR CARDS */
-/* box-shadow:0 7px 30px -10px rgba(150,170,180,0.5); */
-
-
+$LogRegBtn: rgb(188, 188, 255);
 
 .App {
-  text-align: center;
+    text-align: center;
 }
-
+  
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
-
+  
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
 }
-
-
 
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
-
+  
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
-
-
-
+  
+  
+  
 /* ###################### NAVIGATION ###################### */
-
-
-
+  
+  
+  
 .tdt {
-  background-color: lavender;
-
+    background-color: rgb(137, 137, 213);
+  
 }
 .navigationContainer {
-  display: flex;
-  width: 100%;
+    display: flex;
+    width: 100%;
 }
 
 .tdt-Container {
- margin: auto;
+   margin: auto;
 }
-
+  
 .tdt-Logout {
-  margin: auto;
+    margin: auto;
 }
-
+  
 #logOut-btn {
-  border: none;
-  background-color: lightskyblue;
-  opacity: 80%;
-  border-radius: 5px;
-  font-family: Roboto, sans-serif;
-  font-weight: 300;
-
+    border: none;
+    background-color: $LogRegBtn;
+    opacity: 80%;
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+  
 }
-
+  
 #companyLogo {
-  width: 10%;
-  padding: 1%;
+    width: 10%;
+    padding: 1%;
 }
-
 
 /* ###################### MAIN PAGE DIRECTION  ###################### */
 
@@ -104,7 +97,7 @@
 }
 
 .loginAva{
-  background-image: url('./img/undraw_duplicate_xac4.png');
+  background-image: url('../img/undraw_duplicate_xac4.png');
 }
 
 /* ###################### Login and Register ###################### */
@@ -142,7 +135,7 @@
   border-radius: 15px;
   width:100%;
   margin-top: 20px;
-  background-color: lavender;
+  background-color: $LogRegBtn;
   border: none;
   padding: 6px;
 }
@@ -210,84 +203,120 @@
 /* ////////// TASK LIST CONTAINER /////////// */
 
 ul {
-  counter-reset: index;  
-  padding: 0;
-  max-width: 300px;
+    counter-reset: index;  
+    padding: 0;
+    max-width: 300px;
 }
-
-
+  
+  
 /* ////////////////  MOBILE  ////////////////// */
-
+  
 @media only screen and (max-width: 415px) {
-
-  .main-Sign{
-    display: flex;
-    flex-direction: column;
-    
-  }
-
-  .mainCards{
-    margin: auto;
-
-  }
   
-  .mainTitle {
-    text-align: center;
-    margin: auto;
-    width: 70%;
-    font-size: 24px;
-    
-  }
-
-  /* // LOG IN //  */
-  #signCard {
-    width: 80%;
-  }
-
-  .alreadyuser {
-    margin: 10px;
-  }
-
-  /* // Navigation // */
-  #companyLogo {
-    width: 40%;
-    margin-left: 20px;
-    margin-top: 10px;
-    
-  }
-
-  .tdt-Logout {
-    width: 20%;
-    margin-right: 1px;
-    margin-top: 20px;
-  }
-
+    .main-Sign{
+      display: flex;
+      flex-direction: column;
+      
+    }
   
+    
+    .mainCards{
+      margin: auto;
   
+    }
+    
+    .mainTitle {
+      text-align: center;
+      margin: auto;
+      width: 70%;
+      font-size: 24px;
+      
+    }
+  
+    /* // LOG IN //  */
+    #signCard {
+      width: 80%;
+    }
+  
+    .alreadyuser {
+      margin: 10px;
+    }
+  
+    /* // Navigation // */
+    #companyLogo {
+      width: 40%;
+      margin-left: 20px;
+      margin-top: 10px;
+      
+    }
+  
+    .tdt-Logout {
+      width: 20%;
+      margin-right: 1px;
+      margin-top: 20px;
+    }
+  
+    // TASK LIST  DELETE BUTTON //
+    #delIcon{
+      width: 100%;
+    }
+  
+    #deleteBtn{
+      width: 30px;
+      background-color: white;
+      border: none;
+    }
+
+    // TASK LIST //
+  
+    .taskContainer{
+        width: 100%;
+        border: 1px solid red;
+        height: 350px;
+        
+    }
+
+    .taskList{
+        border: 1px solid $LogRegBtn;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-evenly;
+        
+    }
+
+    .taskTodo{
+        border: 1px solid green;
+        margin: 3px;
+        text-align: center;
+        
+    }
+  
+    
 }
-
-
+  
+  
 /* ######################  ###################### */
-
+  
 #components-layout-demo-top-side-2 .logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 28px 16px 0;
-  float: left;
+    width: 120px;
+    height: 31px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px 28px 16px 0;
+    float: left;
 }
-
+  
 .site-layout-background {
-  background: #fff;
+    background: #fff;
 }
-
+  
 /* ######################  ###################### */
-
+  
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
 }
+  

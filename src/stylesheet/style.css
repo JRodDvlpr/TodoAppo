@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&family=Roboto:wght@100;300;400&display=swap");
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    -webkit-animation: App-logo-spin infinite 20s linear;
+            animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* ###################### NAVIGATION ###################### */
+.tdt {
+  background-color: #8989d5;
+}
+
+.navigationContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.tdt-Container {
+  margin: auto;
+}
+
+.tdt-Logout {
+  margin: auto;
+}
+
+#logOut-btn {
+  border: none;
+  background-color: #bcbcff;
+  opacity: 80%;
+  border-radius: 5px;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+}
+
+#companyLogo {
+  width: 10%;
+  padding: 1%;
+}
+
+/* ###################### MAIN PAGE DIRECTION  ###################### */
+.main {
+  width: 100%;
+  height: 100vh;
+}
+
+.main-Sign {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+}
+
+.mainCards {
+  margin: auto;
+}
+
+.mainTitle {
+  text-align: center;
+  margin: auto;
+  width: 70%;
+}
+
+.loginAva {
+  background-image: url("../img/undraw_duplicate_xac4.png");
+}
+
+/* ###################### Login and Register ###################### */
+.b-Container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 60px;
+  margin-bottom: 40px;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+#b-Logo {
+  width: 80%;
+}
+
+.b-Name {
+  width: 20%;
+}
+
+.b-Name2 {
+  width: 70%;
+  font-size: 26px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 200;
+}
+
+.loginbg {
+  height: 100vh;
+  padding-top: 40px;
+}
+
+.form-button {
+  border-radius: 15px;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #bcbcff;
+  border: none;
+  padding: 6px;
+}
+
+.input-Container {
+  padding: 10px;
+}
+
+#signupTitle {
+  text-align: center;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+
+.register-form-button {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+
+#signCard {
+  background-color: #fff;
+  border-radius: 5px;
+  margin: auto;
+  padding: 2%;
+  width: 40%;
+}
+
+.register-form-button {
+  width: 100%;
+}
+
+.alreadyuser {
+  padding-top: 5%;
+  font-family: Montserrat, sans-serif;
+  font-weight: 300;
+}
+
+.ml-hover {
+  text-decoration: underline;
+}
+
+.ml-hover:hover {
+  color: purple;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* //////// DASHBOARD //////// */
+.dash-Title {
+  font-family: Montserrat, sans-serif;
+  font-size: 40px;
+  font-weight: 100;
+  text-align: center;
+}
+
+/* ////////// ADD TASK CONTAINER ////////// */
+#addTaskContaier {
+  text-align: center;
+}
+
+/* ////////// TASK LIST CONTAINER /////////// */
+ul {
+  counter-reset: index;
+  padding: 0;
+  max-width: 300px;
+}
+
+/* ////////////////  MOBILE  ////////////////// */
+@media only screen and (max-width: 415px) {
+  .main-Sign {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .mainCards {
+    margin: auto;
+  }
+  .mainTitle {
+    text-align: center;
+    margin: auto;
+    width: 70%;
+    font-size: 24px;
+  }
+  /* // LOG IN //  */
+  #signCard {
+    width: 80%;
+  }
+  .alreadyuser {
+    margin: 10px;
+  }
+  /* // Navigation // */
+  #companyLogo {
+    width: 40%;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+  .tdt-Logout {
+    width: 20%;
+    margin-right: 1px;
+    margin-top: 20px;
+  }
+  #delIcon {
+    width: 100%;
+  }
+  #deleteBtn {
+    width: 30px;
+    background-color: white;
+    border: none;
+  }
+  .taskContainer {
+    width: 100%;
+    border: 1px solid red;
+    height: 350px;
+  }
+  .taskList {
+    border: 1px solid #bcbcff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  .taskTodo {
+    border: 1px solid green;
+    margin: 3px;
+    text-align: center;
+  }
+}
+
+/* ######################  ###################### */
+#components-layout-demo-top-side-2 .logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 28px 16px 0;
+  float: left;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+/* ######################  ###################### */
+@-webkit-keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=style.css.map */

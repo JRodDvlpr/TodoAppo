@@ -1,59 +1,63 @@
 import React, {useState} from 'react';
 
-import { useDispatch } from 'react-redux'
+//REDUX -
+import { addTodo } from '../../Redux/Actions/actions.js';
+import {getTasks} from '../../Redux/Actions/actions.js';
+import { useDispatch} from 'react-redux';
 
-import { addTodo } from '../../Redux/Actions/actions.js'
+const AddTodo = () => {
 
-const InputForm = () => { 
+    const [addTask, setAddTask] = useState({
+        text:'',
+        completed: false
+    })
 
     const dispatch = useDispatch();
 
-    const [task, setTask ] = useState({
-        text: '',
-        completed: false
-    });
-
-
     const handleChange = (e) => {
-        e.preventDefault();
-        setTask({[e.target.name]: e.target.value });
+        setAddTask({...addTask, [e.target.name]: e.target.value});
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addTodo(task))
-        setTask({ 
+        dispatch(addTodo(addTask))
+        dispatch(getTasks())
+        setAddTask({ 
             text: '',
             completed: false
         });
 
     }
+
     return(
 
-        <>
         <div>
-            <div>
+
+        <div>
                 <form onSubmit={handleSubmit}>
                     <div id="addTaskContaier">
+                        <p>Add Task</p>
                         <div>
-                            <p>Add Task</p>
                             <input 
                             placeholder="Add a Task"
                             type="text" 
-                            value={task.text}
+                            value={addTask.text}
+                            name="text"
                             onChange={handleChange}
-                            name="name"
+
                             >
                             </input>
                             <button>Add</button>
                         </div>
+
+                        <div></div>
                         
                     </div>
                 </form>
             </div>
-        </div>
-        </>
+    </div>
+    
     )
 }
 
-export default InputForm;
+export default AddTodo;
