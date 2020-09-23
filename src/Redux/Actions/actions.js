@@ -46,6 +46,7 @@ export const GET_TASK_SUCCESS = 'GET_TASK_SUCCESS'
 export const getTasks = () => dispatch =>{
     
     const id = localStorage.getItem('userId')
+    
     axiosWithAuth().get(`/todo/${id}/tasks`)
     .then(res => {
         dispatch({ type: GET_TASK_SUCCESS, payload: res.data})
@@ -65,31 +66,39 @@ export const addTodo = (input) => dispatch => {
     axiosWithAuth()
     .post(`/todo/${id}/add`, input)
     .then(res => {
-        console.log(res);
         dispatch({ type:ADD_TODO_SUCCESS, payload: res.data })
     })
     .catch(err => dispatch({ type: GENERATE_ERROR, payload: err}))
 }
 
-// CLEAR COMPLETED //
-export const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
-
-export const clearCompleted = () => dispatch => {
-    dispatch({ type: CLEAR_COMPLETED })
-}
-
-// TOGGLE TODO //
-export const TOGGLE_TODO = 'TOGGLE_TODO'
-
-export const toggleTodo = () => dispatch => {
-    dispatch({ type: TOGGLE_TODO })
-}
 
 // EDIT TODO  //
 export const EDIT_TODO_SUCCESS = 'EDIT_TODO_SUCCESS'
 
+export const editTask = (editTask) => dispatch => {
+    const id = localStorage.getItem('userId');
+
+    axiosWithAuth().put(`/todo/${id}/tasks/${editTask.id}`, editTask)
+    .then(res => {
+        dispatch({type: EDIT_TODO_SUCCESS, payload: res.data})
+    })
+    .catch(err => dispatch({ type: GENERATE_ERROR }))
+}
+
 //  DELETE TODO //
 export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS'
+
+export const deleteTask = (deleteTask) => dispatch => {
+
+    const id = localStorage.getItem('userId')
+
+    axiosWithAuth().delete(`/todo/${id}/tasks/${deleteTask}`)
+    .then(res => {
+        console.log(res);
+        dispatch({type: DELETE_TODO_SUCCESS, payload: deleteTask})
+    })
+    .catch(err => dispatch({type: GENERATE_ERROR }))
+}
 
 
 // ERROR MESSAGE // 

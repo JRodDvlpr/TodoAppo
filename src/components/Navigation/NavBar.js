@@ -31,7 +31,7 @@ const NavBar = () => {
         <img id="companyLogo" src={Logo} alt="LogoT" />
       </div>
         
-
+      
       <div className="tdt-Logout">
         <button id="logOut-btn" onClick={handleLogout}>Logout</button>
       </div>

@@ -1,10 +1,16 @@
 import React from 'react';
 
-const Todo = () => {
+import { useDispatch} from 'react-redux';
+import { deleteTask } from '../../Redux/Actions/actions.js'
+
+const Todo = ({ id, text }) => {
+
+    const dispatch = useDispatch();
 
     return (
         <div>
-            <p></p>
+            <p>{text}</p>
+            <button id='delBtn' onClick={() => {dispatch(deleteTask(id));}}>X</button>
         </div>
     )
 }

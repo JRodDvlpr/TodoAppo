@@ -1,50 +1,48 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
-import { getTasks } from '../../Redux/Actions/actions.js'
+import { getTasks, deleteTask } from '../../Redux/Actions/actions.js'
+import EditForm from './EditForm'
 
-import {Checkbox} from 'antd';
 
-import toggleTodo from '../../Redux/Actions/actions.js'
+import TodoCard from './Todo';
+import {Spin } from 'antd';
 
 const TodoList = () => {
 
     const dispatch = useDispatch();
-
+    
     const taskList = useSelector(state => state.taskList)
+    const isLoading = useSelector(state => state.isLoading)
+
+    const [edit, setEdit ] = useState(false);
+
+    const [editText, setEditText ] = useState({
+        text: '',
+    
+    })
 
     useEffect(() => {
         dispatch(getTasks());
     }, [dispatch]);
 
 
-    // Checkbox ANTD //
-    function onChange(e) {
-        console.log(`checked = ${e.target.checked}`);
-    }
 
-
+    
     return (
         <div className="taskContainer">
             
-        {taskList.length > 0 ? (
+        {isLoading ? (<Spin />) : (
             <div className="taskList">
                 {taskList.map((item, index) => (
                     <div key={index}>
-                    <div className="taskTodo" onClick={() => {dispatch(toggleTodo());}}>
-                        <Checkbox onChange={onChange}> </Checkbox>
-
-                        {item.text}
-                        
+                    <TodoCard id={item.id} text={item.text} /> 
+            
                     </div>
-
                     
-                    
-                </div>
                 ))}
+                
             </div>
-        ) : (
-            <p>No task has been added as of yet</p>
-        )}
+        ) } 
 
 
         </div>

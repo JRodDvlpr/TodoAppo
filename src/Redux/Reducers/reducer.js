@@ -4,8 +4,6 @@ import {
     LOGOUT_USER,
     GET_TASK_SUCCESS,
     ADD_TODO_SUCCESS,
-    TOGGLE_TODO,
-    CLEAR_COMPLETED,
     EDIT_TODO_SUCCESS,
     DELETE_TODO_SUCCESS,
     GENERATE_ERROR,
@@ -21,7 +19,7 @@ const initialState = {
     taskList: [],
     isLoggedIn: false,
     error: null,
-    isLoading: false,
+    isLoading: true,
     
 }
 
@@ -39,13 +37,11 @@ export const reducer = (state = initialState, action) => {
            user: action.payload,
            userId: action.payload.user.id,
            isLoggedIn: true,
-           isLoading: true
 
         };
 
 
         // REGISTER USER //
-
         case REGISTER_USER:
         localStorage.setItem('token', action.payload.token)
         localStorage.setItem('userId', action.payload.user.id)
@@ -54,13 +50,12 @@ export const reducer = (state = initialState, action) => {
             ...state,
             user: action.payload,
             userId: action.payload.user.id,
-           isLogged: true,
-           isLoading: true
+            isLoggedIn: true,
+
            
         };
 
         // LOGOUT USER & REMOVE TOKEN //
-
         case LOGOUT_USER:
 			localStorage.removeItem("token");
             localStorage.removeItem("userId");
@@ -70,12 +65,11 @@ export const reducer = (state = initialState, action) => {
         }
 
         // FETCH TASK FOR USER //
-
         case GET_TASK_SUCCESS: 
         return { 
             ...state, 
             taskList: [...action.payload],
-            isLoading: true
+            isLoading: false
         }
 
         // ADD TASK FOR USER //
@@ -86,31 +80,6 @@ export const reducer = (state = initialState, action) => {
             taskList: [...state.taskList, action.payload],
         }
 
-        // TOGGLE TASK //
-        case TOGGLE_TODO:
-            let id = action.payload.data.id;
-        return {
-            ...state,
-            taskList: state.taskList.map(task => {
-                if (task.id === id) {
-                    return {
-                        ...task,
-                        completed: !task.completed,
-                    };
-                }
-                return task;
-            })
-        }
-
-        // CLEAR TASK //
-        case CLEAR_COMPLETED:
-        return {
-            ...state,
-            taskList: state.taskList.filter(task => {
-                return !task.completed
-            }),
-        };
-        
             
         // EDIT TASK //
 

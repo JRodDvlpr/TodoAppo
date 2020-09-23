@@ -15,7 +15,6 @@ import Dashboard from './components/Dashboard/index.js';
 import AddTask from './components/Dashboard//AddTask.js';
 
 //Components
-import Nav from './components/Navigation/NavBar.js';
 import Footer from './components/Dashboard/Footer.js'
 
 
@@ -24,7 +23,8 @@ function App() {
   return (
 
     <div>
-      <Nav />
+
+      
     {/* {     
     localStorage.getItem('token') ? <Redirect to={`/dashboard/${localStorage.getItem('id')}`} /> : null
     }	       */}
