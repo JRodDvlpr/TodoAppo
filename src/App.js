@@ -2,7 +2,7 @@ import React from 'react';
 import './stylesheet/style.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import { useSelector } from 'react-redux'
+
 // Protected Route requires Tokens
 import PrivateRoute from './utils/restrictedRoute';
 

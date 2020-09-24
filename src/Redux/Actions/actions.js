@@ -98,6 +98,7 @@ export const editTaskId = (task) => dispatch => {
     .then(res => {
         console.log(task.id);
         dispatch({type: EDIT_TODO_SUCCESS, payload: res.data.body})
+        
     })
     .catch(err => dispatch({ type: GENERATE_ERROR }))
 }
