@@ -1,31 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
-import { getTasks, deleteTask } from '../../Redux/Actions/actions.js'
-import EditForm from './EditForm'
-
+import { getTasks } from '../../Redux/Actions/actions.js'
 
 import TodoCard from './Todo';
 import {Spin } from 'antd';
 
+import { deleteTask } from '../../Redux/Actions/actions.js'
+
+import { Link } from 'react-router-dom';
+
 const TodoList = () => {
 
     const dispatch = useDispatch();
-    
+
     const taskList = useSelector(state => state.taskList)
+    
+
     const isLoading = useSelector(state => state.isLoading)
 
-    const [edit, setEdit ] = useState(false);
-
-    const [editText, setEditText ] = useState({
-        text: '',
     
-    })
-
     useEffect(() => {
         dispatch(getTasks());
     }, [dispatch]);
-
-
 
     
     return (
@@ -33,14 +29,19 @@ const TodoList = () => {
             
         {isLoading ? (<Spin />) : (
             <div className="taskList">
-                {taskList.map((item, index) => (
-                    <div key={index}>
-                    <TodoCard id={item.id} text={item.text} /> 
-            
-                    </div>
-                    
+                 
+                {taskList.map(task => (
+                <div key={task.id}>
+
+                    <TodoCard   text={task.text} /> 
+
+                    <button id='delBtn' onClick={() => {dispatch(deleteTask(task.id));}}>X</button>
+
+                    <Link to={`/edittask/${task.id}`}>
+                        <button>Edit</button>
+                    </Link> 
+                </div>
                 ))}
-                
             </div>
         ) } 
 

@@ -6,8 +6,7 @@ import {
     ADD_TODO_SUCCESS,
     EDIT_TODO_SUCCESS,
     DELETE_TODO_SUCCESS,
-    GENERATE_ERROR,
-    CLEAR_ERROR
+    GENERATE_ERROR
 
 
 } from '../Actions/actions.js'
@@ -104,14 +103,6 @@ export const reducer = (state = initialState, action) => {
             error: action.payload
         };
 
-        // CLEAR ERROR MESSAGE //
-
-        case CLEAR_ERROR:
-        return {
-            ...state,
-            error: null
-        };
-        
     default: 
         return state;
     }

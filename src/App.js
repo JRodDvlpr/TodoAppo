@@ -1,7 +1,8 @@
 import React from 'react';
 import './stylesheet/style.css';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
+import { useSelector } from 'react-redux'
 // Protected Route requires Tokens
 import PrivateRoute from './utils/restrictedRoute';
 
@@ -12,28 +13,33 @@ import Main from './components/MainPage/index.js';
 
 // DASHBOARD AND NAVIGATION
 import Dashboard from './components/Dashboard/index.js';
-import AddTask from './components/Dashboard//AddTask.js';
+import editTask from './components/Dashboard/EditForm.js';
 
 //Components
 import Footer from './components/Dashboard/Footer.js'
 
 
 function App() {
+  
 
   return (
 
     <div>
-
       
-    {/* {     
-    localStorage.getItem('token') ? <Redirect to={`/dashboard/${localStorage.getItem('id')}`} /> : null
-    }	       */}
-    <PrivateRoute exact path="/dashboard/:id" component={ Dashboard }  />
-    <PrivateRoute exact path="/addtask" component={ AddTask } />
-    <Route exact path="/" component={ Main } />
+    {     
+    localStorage.getItem('token') ? <Redirect to={`/dashboard/${localStorage.getItem('userId')}`} /> : <Route exact path="/" component={ Main } />
+    }	
+
+    <Switch>
+    
     <Route exact path="/register" component={ Register } />
     <Route exact path="/login" component={ Login } />
-
+    
+    <PrivateRoute exact path="/dashboard/:id" component={ Dashboard }  />
+    <PrivateRoute exact path="/edittask/:id" component={ editTask } />
+    
+   
+    </Switch>
     <Footer />
 
     </div>

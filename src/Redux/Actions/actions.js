@@ -40,20 +40,35 @@ export const logoutUser = (props) => (dispatch) => {
     
 };
 
-// RETRIEVE TASK FOR USER //
+// GET ALL TASKs FOR USER //
 export const GET_TASK_SUCCESS = 'GET_TASK_SUCCESS'
 
-export const getTasks = () => dispatch =>{
+export const getTasks = (props) => dispatch =>{
     
     const id = localStorage.getItem('userId')
     
     axiosWithAuth().get(`/todo/${id}/tasks`)
     .then(res => {
+        console.log(res);
         dispatch({ type: GET_TASK_SUCCESS, payload: res.data})
-    
+        props.history.push(`/dashboard/${res.data.user.id}`)
     })
     .catch(err => dispatch({ type: GENERATE_ERROR, payload: err }))
 
+}
+
+// GET INDIVIDUAL TASK BY ID //
+export const GET_TASKID_SUCCESS = 'GET_TASKID_SUCCESS'
+
+export const getTaskID = (taskId) => dispatch =>{
+    
+    const id = localStorage.getItem('userId')
+
+    axiosWithAuth().get(`/todo/${id}/tasks/${taskId}`, taskId)
+    .then(res =>{
+        dispatch({ type: GET_TASKID_SUCCESS, payload: res.data })
+    })
+    .catch(err => dispatch({ type: GENERATE_ERROR, payload: err }))
 }
 
 // ADD TASK
@@ -75,12 +90,14 @@ export const addTodo = (input) => dispatch => {
 // EDIT TODO  //
 export const EDIT_TODO_SUCCESS = 'EDIT_TODO_SUCCESS'
 
-export const editTask = (editTask) => dispatch => {
-    const id = localStorage.getItem('userId');
+export const editTaskId = (task) => dispatch => {
 
-    axiosWithAuth().put(`/todo/${id}/tasks/${editTask.id}`, editTask)
+    const id = localStorage.getItem('userId');
+    console.log(task.id);
+    axiosWithAuth().put(`/todo/${id}/tasks/${task.id}`, task)
     .then(res => {
-        dispatch({type: EDIT_TODO_SUCCESS, payload: res.data})
+        console.log(task.id);
+        dispatch({type: EDIT_TODO_SUCCESS, payload: res.data.body})
     })
     .catch(err => dispatch({ type: GENERATE_ERROR }))
 }
@@ -108,10 +125,3 @@ export const setError = (errorMessage) => (dispatch) => {
     dispatch({ type: GENERATE_ERROR, payload: errorMessage });
 }
 
-
-// CLEAR AN ERROR MESSAGE //
-export const CLEAR_ERROR = 'CLEAR_ERROR'
-
-export const clearError = () => (dispatch) => {
-    dispatch({ type: CLEAR_ERROR, payload: null})
-} 
