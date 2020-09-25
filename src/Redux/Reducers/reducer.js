@@ -34,7 +34,7 @@ export const reducer = (state = initialState, action) => {
         return {
             ...state,
            user: action.payload,
-           userId: action.payload.user.id,
+           userId: [action.payload.user.id],
            isLoggedIn: true,
 
         };

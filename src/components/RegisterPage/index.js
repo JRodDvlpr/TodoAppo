@@ -23,16 +23,18 @@ const Register = (props) => {
     const dispatch = useDispatch();
     
     const [user, setUser] = useState({
-        username: "",
-        password: ""
+        username: '',
+        email: '',
+        password: ''
     });
   
     const handleSubmit = (event) => {
-        console.log("NewUser in handle", user);
+ 
         event.preventDefault();
         dispatch(registerUser(user, props));
         setUser({
             username: '',
+            email: '',
             password: ''
         })
            
@@ -87,6 +89,21 @@ const Register = (props) => {
 
             <div className="input-Container">
 
+                <Input 
+                    prefix={<UserOutlined className="site-form-item-icon" />} 
+                    name="email" required
+                    type="text" 
+                    value={user.email} 
+                    placeholder="Email"  
+                    onChange={handleChange} 
+                />
+
+            </div>
+
+            
+
+            <div className="input-Container">
+
                 
                 <Input.Password
                     prefix={<LockOutlined className="site-form-item-icon" />}
@@ -99,7 +116,7 @@ const Register = (props) => {
             
             </div>
 
-            <div>
+            
 
                 <div className="button-Container">
                     <button className="form-button">
@@ -118,7 +135,7 @@ const Register = (props) => {
                     </div>
 
                 </div>
-            </div>
+            
         </form>
 
                 

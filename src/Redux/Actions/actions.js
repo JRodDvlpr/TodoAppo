@@ -9,11 +9,12 @@ export const registerUser = (user, props) => dispatch => {
     axiosWithAuth()
     .post('/auth/register', user)
     .then(res => {
-        dispatch({ type: REGISTER_USER, payload: res.data, id: res.data.user.id })
+        dispatch({ type: REGISTER_USER, payload: res.data, id: res.data.id })
+        console.log(res.data);
         props.history.push(`/dashboard/${res.data.user.id}`)
     })
     .catch(err =>
-    dispatch({ errorMessage: GENERATE_ERROR, error: err.message}))
+    dispatch({ type: GENERATE_ERROR, payload: err.data}))
 }
 
 
@@ -49,7 +50,7 @@ export const getTasks = (props) => dispatch =>{
     
     axiosWithAuth().get(`/todo/${id}/tasks`)
     .then(res => {
-        console.log(res);
+
         dispatch({ type: GET_TASK_SUCCESS, payload: res.data})
         props.history.push(`/dashboard/${res.data.user.id}`)
     })
@@ -96,7 +97,7 @@ export const editTaskId = (task) => dispatch => {
     console.log(task.id);
     axiosWithAuth().put(`/todo/${id}/tasks/${task.id}`, task)
     .then(res => {
-        console.log(task.id);
+
         dispatch({type: EDIT_TODO_SUCCESS, payload: res.data.body})
         
     })

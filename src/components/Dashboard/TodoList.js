@@ -30,10 +30,10 @@ const TodoList = () => {
         {isLoading ? (<Spin />) : (
             <div className="taskList">
                  
-                {taskList.map(task => (
-                <div key={task.id}>
+                {taskList.map((task, index) => (
+                <div key={index}>
 
-                    <TodoCard   text={task.text} /> 
+                    <TodoCard text={task.text} /> 
 
                     <button id='delBtn' onClick={() => {dispatch(deleteTask(task.id));}}>X</button>
 
