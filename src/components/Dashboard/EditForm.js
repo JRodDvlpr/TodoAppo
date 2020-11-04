@@ -9,6 +9,10 @@ import { editTaskId } from '../../Redux/Actions/actions.js'
 // REACT-ROUTER //
 import {  Link, useParams, useHistory } from 'react-router-dom';
 
+import Nav from '../Navigation/NavBar';
+
+import { Input, Card } from 'antd';
+
 
 
 const EditTask = () => {
@@ -48,17 +52,42 @@ const EditTask = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
 
-            <input type="text" name='text' value={task.text} onChange={onChange} required/>
+        <>
 
-            <button>Save</button>
-            <Link to={`/dashboard/${localStorage.getItem('userId')}`}>
-                <button>Cancel</button>
-            </Link>
+        <Nav />
+        
+        <header className="dash-Title">
+            <p>Todo</p>
+        </header>
+        <div className="taskContainer">
+        <div className="t-Card">
+        <Card>
+            <form onSubmit={handleSubmit}>
+
+            <Input type="text" name='text' value={task.text} onChange={onChange} required/>
+
+            <div className="e-d-btns">
+                <div className="btn-space">
+                    <button>Accept</button>
+                </div>
+
+
+                <div className="btn-space">
+                    <Link to={`/dashboard/${localStorage.getItem('userId')}`}>
+                        <p>Cancel</p>
+                    </Link>
+                </div>
+            </div>
+            
+            
          
 
         </form>
+        </Card>
+        </div>
+        </div>
+        </>
     )
 }
 

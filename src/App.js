@@ -1,7 +1,7 @@
 import React from 'react';
 import './stylesheet/style.css';
-import { Route, Switch, Redirect } from 'react-router-dom';
 
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // Protected Route requires Tokens
 import PrivateRoute from './utils/restrictedRoute';
@@ -15,8 +15,7 @@ import Main from './components/MainPage/index.js';
 import Dashboard from './components/Dashboard/index.js';
 import editTask from './components/Dashboard/EditForm.js';
 
-//Components
-import Footer from './components/Dashboard/Footer.js'
+
 
 
 function App() {
@@ -36,11 +35,11 @@ function App() {
     <Route exact path="/login" component={ Login } />
     
     <PrivateRoute exact path="/dashboard/:id" component={ Dashboard }  />
-    <PrivateRoute exact path="/edittask/:id" component={ editTask } />
+    <PrivateRoute exact path="/edit/:id" component={ editTask } />
     
    
     </Switch>
-    <Footer />
+    
 
     </div>
 

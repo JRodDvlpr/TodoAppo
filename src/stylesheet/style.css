@@ -73,6 +73,11 @@
   padding: 1%;
 }
 
+p {
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+}
+
 /* ###################### MAIN PAGE DIRECTION  ###################### */
 .main {
   width: 100%;
@@ -187,6 +192,11 @@
   text-decoration: underline;
 }
 
+.site-card-border-less-wrapper {
+  padding: 30px;
+  background: #ececec;
+}
+
 /* //////// DASHBOARD //////// */
 .dash-Title {
   font-family: Montserrat, sans-serif;
@@ -245,18 +255,29 @@ ul {
     margin-right: 1px;
     margin-top: 20px;
   }
-  #delIcon {
+  #add-T {
+    border: solid lavender;
+    border-width: 0.1em;
+  }
+  .delIcon {
     width: 100%;
   }
   #deleteBtn {
-    width: 30px;
+    width: 5vh;
     background-color: white;
     border: none;
   }
   .taskContainer {
-    width: 100%;
-    border: 1px solid red;
-    height: 350px;
+    border: 1px solid blue;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    padding: 30px;
+    background: #ececec;
   }
   .taskList {
     border: 1px solid #bcbcff;
@@ -271,10 +292,22 @@ ul {
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
   }
-  .taskTodo {
-    border: 1px solid green;
-    margin: 3px;
-    text-align: center;
+  .t-Card {
+    width: 100%;
+    margin: 1%;
+    background-color: white;
+  }
+  .e-d-btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: wrap;
+            flex-direction: wrap;
+  }
+  .btn-space {
+    margin: auto;
   }
 }
 

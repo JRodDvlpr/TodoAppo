@@ -70,6 +70,10 @@ $LogRegBtn: rgb(188, 188, 255);
     width: 10%;
     padding: 1%;
 }
+p{
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+}
 
 /* ###################### MAIN PAGE DIRECTION  ###################### */
 
@@ -186,6 +190,11 @@ $LogRegBtn: rgb(188, 188, 255);
   text-decoration: underline;
 }
 
+.site-card-border-less-wrapper {
+  padding: 30px;
+  background: #ececec;
+}
+
 /* //////// DASHBOARD //////// */
 .dash-Title {
   font-family: Montserrat, sans-serif;
@@ -198,6 +207,7 @@ $LogRegBtn: rgb(188, 188, 255);
 
 #addTaskContaier {
   text-align:center;
+  
 }
 
 /* ////////// TASK LIST CONTAINER /////////// */
@@ -213,83 +223,97 @@ ul {
   
 @media only screen and (max-width: 415px) {
   
-    .main-Sign{
-      display: flex;
-      flex-direction: column;
-      
-    }
-  
+  .main-Sign{
+    display: flex;
+    flex-direction: column;
     
-    .mainCards{
-      margin: auto;
+  }
+
   
-    }
+  .mainCards{
+    margin: auto;
+
+  }
+  
+  .mainTitle {
+    text-align: center;
+    margin: auto;
+    width: 70%;
+    font-size: 24px;
     
-    .mainTitle {
-      text-align: center;
-      margin: auto;
-      width: 70%;
-      font-size: 24px;
+  }
+
+  /* // LOG IN //  */
+  #signCard {
+    width: 80%;
+  }
+
+  .alreadyuser {
+    margin: 10px;
+  }
+
+  /* // Navigation // */
+  #companyLogo {
+    width: 40%;
+    margin-left: 20px;
+    margin-top: 10px;
+    
+  }
+
+  .tdt-Logout {
+    width: 20%;
+    margin-right: 1px;
+    margin-top: 20px;
+  }
+  // ADD TASK //
+  #add-T{
+    border: solid lavender;
+    border-width: 0.1em
+  }
+  // TASK LIST  DELETE BUTTON //
+  .delIcon{
+    width:100%;
+  }
+
+  #deleteBtn{
+    width: 5vh;
+    background-color: white;
+    border: none;
+  }
+  // TASK LIST //
+
+  .taskContainer{
+    border: 1px solid blue;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 30px;
+    background: #ececec;
+  
       
-    }
-  
-    /* // LOG IN //  */
-    #signCard {
-      width: 80%;
-    }
-  
-    .alreadyuser {
-      margin: 10px;
-    }
-  
-    /* // Navigation // */
-    #companyLogo {
-      width: 40%;
-      margin-left: 20px;
-      margin-top: 10px;
+  }
+  .taskList{
+    border: 1px solid $LogRegBtn;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
       
-    }
-  
-    .tdt-Logout {
-      width: 20%;
-      margin-right: 1px;
-      margin-top: 20px;
-    }
-  
-    // TASK LIST  DELETE BUTTON //
-    #delIcon{
-      width: 100%;
-    }
-  
-    #deleteBtn{
-      width: 30px;
-      background-color: white;
-      border: none;
-    }
+  }
+  .t-Card{
+    width: 100%;
+    margin: 1%;
+    background-color: white;
+  }
 
-    // TASK LIST //
+  .e-d-btns{
+    display: flex;
+    flex-direction: wrap;
+  }
+
+  .btn-space{
+    margin: auto;
+  }
+
   
-    .taskContainer{
-        width: 100%;
-        border: 1px solid red;
-        height: 350px;
-        
-    }
-
-    .taskList{
-        border: 1px solid $LogRegBtn;
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: space-evenly;
-        
-    }
-
-    .taskTodo{
-        border: 1px solid green;
-        margin: 3px;
-        text-align: center;
-        
-    }
   
     
 }

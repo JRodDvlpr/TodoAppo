@@ -115,6 +115,7 @@ export const deleteTask = (deleteTask) => dispatch => {
     .then(res => {
         console.log(res);
         dispatch({type: DELETE_TODO_SUCCESS, payload: deleteTask})
+        console.log(res);
     })
     .catch(err => dispatch({type: GENERATE_ERROR }))
 }

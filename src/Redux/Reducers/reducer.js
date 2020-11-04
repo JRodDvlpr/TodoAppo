@@ -67,7 +67,7 @@ export const reducer = (state = initialState, action) => {
         case GET_TASK_SUCCESS: 
         return { 
             ...state, 
-            taskList: [...action.payload],
+            taskList: action.payload,
             isLoading: false
         }
 
@@ -76,7 +76,7 @@ export const reducer = (state = initialState, action) => {
         case ADD_TODO_SUCCESS:
         return {
             ...state,
-            taskList: [...state.taskList, action.payload],
+            taskList: action.payload
         }
 
             

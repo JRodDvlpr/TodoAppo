@@ -26,6 +26,7 @@ const NavBar = () => {
 
   return (
     <div className="navigationContainer">
+      <div></div>
 
       <div>
         <img id="companyLogo" src={Logo} alt="LogoT" />
@@ -35,6 +36,9 @@ const NavBar = () => {
       <div className="tdt-Logout">
         <button id="logOut-btn" onClick={handleLogout}>Logout</button>
       </div>
+
+        
+     
     </div>
       
   )

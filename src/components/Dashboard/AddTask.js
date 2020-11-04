@@ -5,6 +5,8 @@ import { addTodo } from '../../Redux/Actions/actions.js';
 import {getTasks} from '../../Redux/Actions/actions.js';
 import { useDispatch} from 'react-redux';
 
+import { Input } from 'antd';
+
 const AddTodo = () => {
 
     const [addTask, setAddTask] = useState({
@@ -30,32 +32,29 @@ const AddTodo = () => {
     }
 
     return(
+        <>
+            <form onSubmit={handleSubmit}>
+                <div id="addTaskContaier">
+                    <p>Add Task</p>
+                    
+                <div>
+                    <Input 
+                    
+                    id='add-T'
+                    placeholder="Add Task" 
+                    type="text" 
+                    value={addTask.text}
+                    name="text"
+                    onChange={handleChange}
+                    style={{width: 240}}
+                    />
 
-        <div>
-
-        <div>
-                <form onSubmit={handleSubmit}>
-                    <div id="addTaskContaier">
-                        <p>Add Task</p>
-                        <div>
-                            <input 
-                            placeholder="Add a Task"
-                            type="text" 
-                            value={addTask.text}
-                            name="text"
-                            onChange={handleChange}
-
-                            >
-                            </input>
-                            <button>Add</button>
-                        </div>
-
-                        <div></div>
-                        
-                    </div>
-                </form>
-            </div>
-    </div>
+                    <button>Add</button>
+                </div>
+              
+                </div>
+            </form>
+        </>
     
     )
 }
